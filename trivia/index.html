@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+
+<html lang="en">
+    <head>
+        <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap" rel="stylesheet">
+        <link href="styles.css" rel="stylesheet">
+        <title>Trivia!</title>
+        <script>
+            // TODO: Add code to check answers to questions
+
+            //Run scripts only once the DOM is loaded
+            //important as it can prevent the entire script from loading
+            document.addEventListener("DOMContentLoaded", function(){
+
+                //When correct answer is clicked change color to green
+                let correct = document.querySelector(".cor");
+                correct.addEventListener("click", function(){
+                    correct.style.backgroundColor = "green";
+                    document.querySelector("#feedback1").innerHTML = "Correct!";
+                });
+
+                let incorrect = document.querySelectorAll(".inc");
+                for (let i = 0; i < incorrect.length; i++) {
+                    incorrect[i].addEventListener("click", function(){
+                        incorrect[i].style.backgroundColor = "red";
+                        document.querySelector("#feedback1").innerHTML = "Incorrect!";
+                    });
+                }
+
+                let input = document.querySelector("#text-answer");
+                let submit = document.querySelector("#submit");
+
+                submit.addEventListener("click", function() {
+                    if(input.value == "Cape Town") {
+                        input.style.backgroundColor = "green";
+                        document.querySelector("#feedback2").innerHTML = "Correct!";
+                    }
+                })
+            })
+
+        </script>
+    </head>
+    <body>
+        <div class="header">
+            <h1>Trivia!</h1>
+        </div>
+
+        <div class="container">
+            <div class="section">
+                <h2>Part 1: Multiple Choice </h2>
+                <hr>
+                <!-- TODO: Add multiple choice question here -->
+                <h3>What is the name of the first black president in South Africa?</h3>
+                <button class="inc">Thabo Mbekhi</button>
+                <button class="inc">James Gordon</button>
+                <button class="inc">Jacob Zuma</button>
+                <button class="cor">Nelson Mandela</button>
+                <button class="inc">Peter Zule</button>
+                <p id="feedback1"></p>
+            </div>
+
+            <div class="section">
+                <h2>Part 2: Free Response</h2>
+                <hr>
+                <!-- TODO: Add free response question here -->
+                <h3>In which South African city do you find Table Mountain?</h3>
+                <input name="answer" type="text" id="text-answer">
+                <input type="submit" value="Check Answer" id="submit">
+                <p id="feedback2"></p>
+            </div>
+        </div>
+    </body>
+</html>
